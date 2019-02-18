@@ -1,7 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <div style="width: 400px; max-width: 100%">
+        <h3>Statistics</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td>Visitors</td>
+                <td>{{$log['vistors']}}</td>
+            </tr>
+            <tr>
+                <td>Logged (Using existed account)</td>
+                <td>{{$log['logged']}}</td>
+            </tr>
+            <tr>
+                <td>Registered new account</td>
+                <td>{{$log['registered']}}</td>
+            </tr>
+            <tr>
+                <td>Played game</td>
+                <td>{{$log['played']}}</td>
+            </tr>
+            <tr>
+                <td>Submitted</td>
+                <td>{{$log['submitted']}}</td>
+            </tr>
+            <tr>
+                <td>Facebook Ref</td>
+                <td>{{$log['facebookRef']}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
 <div class="list">
+    <h3>Game records</h3>
+    <a class="btn btn-success" href="/download-report/xem-web-moi">Download</a>
     <table class="table table-bordered">
         <thead>
             <tr>

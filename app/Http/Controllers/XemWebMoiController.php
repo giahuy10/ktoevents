@@ -5,7 +5,7 @@ use App\Exports\XemWebMoiExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\XemWebMoi;
 use Illuminate\Http\Request;
-
+use App\Log;
 class XemWebMoiController extends Controller
 {
     /**
@@ -15,7 +15,15 @@ class XemWebMoiController extends Controller
      */
     public function index(Request $request)
     {
-        return view('events/xemwebmoi', ['items'=> XemWebMoi::all()]);
+        $log = [
+            "vistors" => Log::where('type', 1)->where('event_id', 1)->count(),
+            "logged" => Log::where('type', 2)->where('event_id', 1)->count(),
+            "registered" => Log::where('type', 3)->where('event_id', 1)->count(),
+            "played" => Log::where('type', 4)->where('event_id', 1)->count(),
+            "submitted" => Log::where('type', 5)->where('event_id', 1)->count(),
+            "facebookRef" => Log::where('type', 1)->where('event_id', 1)->where('data', 'like', '%facebook.com%')->count()
+        ];
+        return view('events/xemwebmoi', ['items'=> XemWebMoi::all(), 'log'=>$log]);
     }
 
     /**

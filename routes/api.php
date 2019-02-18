@@ -22,3 +22,5 @@ Route::prefix('event-xem-web-moi')->group(function () {
     Route::get('/','XemWebMoiController@index');
     Route::post('/download', 'XemWebMoiController@download');
 });
+
+Route::post('log', 'LogController@store');
